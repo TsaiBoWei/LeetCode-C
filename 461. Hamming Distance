@@ -1,0 +1,34 @@
+/*
+Input: x = 1, y = 4
+
+Output: 2
+
+Explanation:
+1   (0 0 0 1)
+4   (0 1 0 0)
+
+這次解題重點在於位元操作，透過XOR ( x ^ y ) 取得x y 相異的值，
+單迴圈若是1 counter++，然後將直向後移一位，直到數值歸零
+
+原本還在思索 int > 2bit，從數字轉字串再做字串比對
+字串長短問題，Hamming Distance不能用於長度不同的字串比較，
+但如果比較不同長度的狀況，需要用手動補上零的方式 ( 就得判斷誰長誰短，誰補零 )
+找出相異後再計數
+沒想到還有這種作法，實在大吃一驚
+
+*/
+
+public class Solution
+{
+    public int HammingDistance(int x, int y)
+    {
+        int i = x ^ y;
+        int n = 0;
+        while (i > 0)
+        {
+            if ((i & 1) == 1) n++;
+            i >>= 1;
+        }
+        return n;
+    }
+}
