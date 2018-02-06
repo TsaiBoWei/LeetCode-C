@@ -17,18 +17,22 @@ Explanation:
 沒想到還有這種作法，實在大吃一驚
 
 */
+public class Solution {
+    public int HammingDistance(int x, int y) {
 
-public class Solution
-{
-    public int HammingDistance(int x, int y)
-    {
-        int i = x ^ y;
-        int n = 0;
-        while (i > 0)
-        {
-            if ((i & 1) == 1) n++;
-            i >>= 1;
-        }
-        return n;
-    }
-}
+        int  num = x ^ y;
+        int  count = 0;
+        
+        while ( num > 0 ) {
+            
+            if ( ( num & 1 ) == 1 )
+                count++;
+            
+            num = num >> 1;
+            
+        } // while
+        
+        return count;
+        
+    } // int
+} // class
